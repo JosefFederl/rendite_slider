@@ -6,7 +6,7 @@
 .slidecontainer {
   width: 100%;
 }
-span { font-size: 3em;}
+span, input { font-size: 3em;}
 
 .slider {
   -webkit-appearance: none;
@@ -47,10 +47,10 @@ span { font-size: 3em;}
 
 <p>Average<span id="rendite">100</span></p>
 <p>weighted_stronger<span id="grendite">100</span></p>
-<p>weighted_kostant<span id="krendite">100</span></p>
+<p>weighted_kostant<span id="krendite">100</span> over a period of <input value="10" size="5"></input>years, anually weight adjustment.</p>
 
 <div class="slidecontainer">
-<span id="g1">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s1"><span id="w1">100</span> <span id="w1_g">100</span><br>
+<span id="g1">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s1"><span id="w1">100</span> <span id="w1_g">: 100</span><br>
 <span id="g2">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s2"><span id="w2">100</span><br>
 <span id="g3">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s3"><span id="w3">100</span><br>
 <span id="g4">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s4"><span id="w4">100</span><br>
