@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.slidecontainer {
+  width: 100%;
+}
+span, input { 
+  font-size: 3em;
+  text-align: right;}
+
+.slider {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 30px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<h3>Return on Investment</h3>
+<p>Average<span id="rendite">100</span></p>
+<p>Rebalanced<span id="rerendite">100</span><input value="10" size="5"></input>years</p>
+<p>weighted_stronger<span id="grendite">100</span></p>
+<p>weighted_kostant<span id="krendite">100</span></p>
+
+<div class="slidecontainer">
+<span id="g1">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s1"><span id="w1">100</span> <span id="w1_g">: 100</span><br>
+<span id="g2">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s2"><span id="w2">100</span><br>
+<span id="g3">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s3"><span id="w3">100</span><br>
+<span id="g4">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s4"><span id="w4">100</span><br>
+<span id="g5">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s5"><span id="w5">100</span><br>
+<span id="g6">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s6"><span id="w6">100</span><br>
+<span id="g7">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s7"><span id="w7">100</span><br>
+<span id="g8">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s8"><span id="w8">100</span><br>
+<span id="g9">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s9"><span id="w9">100</span><br>
+<span id="g10">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s10"><span id="w10">100</span><br>
+<span id="g11">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s11"><span id="w11">100</span><br>
+<span id="g12">8.33</span><input type="range" min="1" max="500" value="100" class="slider" id="s12"><span id="w12">100</span><br>
+</div>
+
+<script>
+var rendite = document.getElementById("rendite");
+var rerendite = document.getElementById("rerendite");
+var grendite = document.getElementById("grendite");
+
+var krendite = document.getElementById("krendite");
+krendite.innerHTML = "noch nicht realisiert";
+
+var s1 = document.getElementById("s1");
+var s2 = document.getElementById("s2");
+var s3 = document.getElementById("s3");
+var s4 = document.getElementById("s4");
+var s5 = document.getElementById("s5");
+var s6 = document.getElementById("s6");
+var s7 = document.getElementById("s7");
+var s8 = document.getElementById("s8");
+var s9 = document.getElementById("s9");
+var s10 = document.getElementById("s10");
+var s11 = document.getElementById("s11");
+var s12 = document.getElementById("s12");
+
+function zehnteWurzel(x) {
+  return Math.pow(x, 1/10);
+}
+
+function rebalDurchschnitt(r1, r2, r3) {
+  return Math.pow((zehnteWurzel(r1) + zehnteWurzel(r2) + zehnteWurzel(r3)) / 3, 10)
+}
+
+function durchschnitt() {
+rendite.innerHTML = (( parseInt(s1.value) + parseInt(s2.value) + parseInt(s3.value) + parseInt(s4.value) + parseInt(s5.value) + parseInt(s6.value) + parseInt(s7.value) + parseInt(s8.value) + parseInt(s9.value) + parseInt(s10.value) + parseInt(s11.value) + parseInt(s12.value) ) / 12 ).toFixed(1);
+gdurchschnitt();
+}
+
+function redurch() {
+rerendite.innerHTML = (50.98).toFixed(1);
+}
+
+function gdurchschnitt() {
+var gesamtper = parseInt(s1.value) + parseInt(s2.value) + parseInt(s3.value) + parseInt(s4.value) + parseInt(s5.value) + parseInt(s6.value) + parseInt(s7.value) + parseInt(s8.value) + parseInt(s9.value) + parseInt(s10.value) + parseInt(s11.value) + parseInt(s12.value) ;
+
+var anteils1 = parseInt(s1.value) / (gesamtper / 100);
+g1.innerHTML = anteils1.toFixed(2);
+var anteils2 = parseInt(s2.value) / (gesamtper / 100);
+g2.innerHTML = anteils2.toFixed(2);
+var anteils3 = parseInt(s3.value) / (gesamtper / 100);
+g3.innerHTML = anteils3.toFixed(2);
+var anteils4 = parseInt(s4.value) / (gesamtper / 100);
+g4.innerHTML = anteils4.toFixed(2);
+var anteils5 = parseInt(s5.value) / (gesamtper / 100);
+g5.innerHTML = anteils5.toFixed(2);
+var anteils6 = parseInt(s6.value) / (gesamtper / 100);
+g6.innerHTML = anteils6.toFixed(2);
+var anteils7 = parseInt(s7.value) / (gesamtper / 100);
+g7.innerHTML = anteils7.toFixed(2);
+var anteils8 = parseInt(s8.value) / (gesamtper / 100);
+g8.innerHTML = anteils8.toFixed(2);
+var anteils9 = parseInt(s9.value) / (gesamtper / 100);
+g9.innerHTML = anteils9.toFixed(2);
+var anteils10 = parseInt(s10.value) / (gesamtper / 100);
+g10.innerHTML = anteils10.toFixed(2);
+var anteils11 = parseInt(s11.value) / (gesamtper / 100);
+g11.innerHTML = anteils11.toFixed(2);
+var anteils12 = parseInt(s12.value) / (gesamtper / 100);
+g12.innerHTML = anteils12.toFixed(2);
+
+grendite.innerHTML = (( 
+anteils1 * parseInt(s1.value) + 
+anteils2 * parseInt(s2.value) + 
+anteils3 * parseInt(s3.value) + 
+anteils4 * parseInt(s4.value) + 
+anteils5 * parseInt(s5.value) + 
+anteils6 * parseInt(s6.value) + 
+anteils7 * parseInt(s7.value) + 
+anteils8 * parseInt(s8.value) + 
+anteils9 * parseInt(s9.value) + 
+anteils10 * parseInt(s10.value) + 
+anteils11 * parseInt(s11.value) + 
+anteils12 * parseInt(s12.value) ) / 100 ).toFixed(1);
+
+w1_g.innerHTML =  "muss berechnet werden";
+}
+
+s1.oninput = function() {
+  w1.innerHTML = s1.value;
+  durchschnitt();
+}
+s2.oninput = function() {
+  w2.innerHTML = s2.value;
+durchschnitt();
+}
+s3.oninput = function() {
+  w3.innerHTML = s3.value;
+durchschnitt();
+}
+s4.oninput = function() {
+  w4.innerHTML = s4.value;
+durchschnitt();
+}
+s5.oninput = function() {
+  w5.innerHTML = s5.value;
+durchschnitt();
+}
+s6.oninput = function() {
+  w6.innerHTML = s6.value;
+durchschnitt();
+}
+s7.oninput = function() {
+  w7.innerHTML = s7.value;
+durchschnitt();
+}
+s8.oninput = function() {
+  w8.innerHTML = s8.value;
+durchschnitt();
+}
+s9.oninput = function() {
+  w9.innerHTML = s9.value;
+durchschnitt();
+}
+s10.oninput = function() {
+  w10.innerHTML = s10.value;
+durchschnitt();
+}
+s11.oninput = function() {
+  w11.innerHTML = s11.value;
+durchschnitt();
+}
+s12.oninput = function() {
+  w12.innerHTML = s12.value;
+durchschnitt();
+}
+</script>
+
+</body>
